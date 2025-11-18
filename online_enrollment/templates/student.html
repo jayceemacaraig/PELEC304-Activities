@@ -1,0 +1,36 @@
+{% extends 'base.html' %}
+
+{% block title%} STUDENT {% endblock %}
+
+{% block content%}
+
+    <form method="POST">
+    {% csrf_token %}
+    {{  form.as_p }}
+
+    <button type='submit'>Submit</button>
+    </form>
+    
+    <h1>STUDENTS :</h1>
+    <div class="card-container">
+    {% for student in students %}
+            <div class="card">
+                <h2>{{student.first_name|upper}} {{student.last_name|upper}}</h2>
+                <h3>{{student.student_ID}}</h3>
+                <hr>
+                <p>YEAR LEVEL: {{student.year_level}}</p>
+                <p>AGE: {{student.age}}</p>
+                <p>ADDRESS: {{student.address}}</p>
+                <p>PROGRAM: {{student.program_title}}</p>
+
+                <a href="{% url 'REGISTER NEW USER' student.id %}">EDIT</a>
+            </div>
+
+        {% empty %}
+        <h1>NO STUDENT FOUND.</h1>
+    {% endfor %}
+    </div>
+    
+{% endblock %}
+
+

@@ -1,0 +1,27 @@
+{% extends 'base.html' %}
+
+{% block title%} PROFESSOR {% endblock %}
+
+{% block content%}
+
+    <h1>PROFESSORS :</h1>
+    <div class="card-container">
+    {% for professor in professors %}
+            <div class="card">
+                <h2>{{professor.first_name|upper}} {{professor.last_name|upper}}</h2>
+                <h3>{{professor.employee_ID}}</h3>
+                <hr>
+                <p>OCCUPATION: {{professor.occupation}}</p>
+                <p>AGE: {{professor.age}}</p>
+                <p>ADDRESS: {{professor.address}}</p>
+                <p>PROGRAM: {{professor.program_title}}</p>
+            </div>
+
+    {% empty %}
+        <h1>NO PROFESSOR FOUND.</h1>
+    {% endfor %}
+    </div>
+    
+{% endblock %}
+
+

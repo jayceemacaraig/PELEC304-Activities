@@ -1,0 +1,28 @@
+{% extends 'base.html' %}
+
+{% block title%} PROGRAM {% endblock %}
+
+{% block content%}
+
+    <h1>PROGRAMS :</h1>
+    <div class="card-container">
+    {% for program in programs %}
+            <div class="card">
+                <h2>{{program.program_title|upper}}</h2>
+                {% if program.specialization != 'N/A' %}
+                    <h5>SPECIALIZED IN {{program.specialization|upper}}</h5>
+                {% endif %}
+                <hr>
+                <p>PROGRAM HEAD: {{program.program_head}}</p>
+                <p>DEGREE DURATION: {{program.degree_duration}}</p>
+                <p>NO. OF STUDENTS: {{program.number_of_students}}</p>
+            </div>
+
+        {% empty %}
+        <h1>NO STUDENT FOUND.</h1>
+    {% endfor %}
+    </div>
+    
+{% endblock %}
+
+

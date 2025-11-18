@@ -1,0 +1,30 @@
+{% extends 'base.html' %}
+
+{% block title%} ENROLLEMENT {% endblock %}
+
+{% block content%}
+
+    <h1>ENROLLMENTS :</h1>
+    <div class="card-container">
+    {% for enrollment in enrollments %}
+            <div class="card">
+                <h2>{{enrollment.student_ID|upper}}</h2>
+                <h3>{{enrollment.enrollment_status}}</h3>
+                <hr>
+                <p>PROGRAM: {{enrollment.program_title}}</p>
+                <p>PROGRAM HEAD: {{enrollment.program_head}}</p>
+                {% if enrollment.balance > 0 %}
+                <p>BALANCE: {{enrollment.balance}}</p>
+                {% else %}
+                <p>BALANCE: NO BALANCE</p>
+                {% endif %}
+            </div>
+
+        {% empty %}
+        <h1>NO STUDENT FOUND.</h1>
+    {% endfor %}
+    </div>
+    
+{% endblock %}
+
+
