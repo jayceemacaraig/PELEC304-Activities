@@ -1,0 +1,43 @@
+{% extends 'base.html'%} {% block content %}
+
+<style>
+  #id_username,
+  #id_password {
+    margin-bottom: 10px;
+    padding: 8px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+  }
+</style>
+
+<div class="w-full h-full flex justify-center items-center">
+  <form
+    method="POST"
+    class="w-2/7 flex flex-col border border-gray-300 p-10 rounded-xl bg-white shadow-lg gap-5"
+  >
+    {% csrf_token %}
+    <h1 class="font-bold text-2xl self-center">LOG IN</h1>
+
+    <div class="flex flex-col">
+      <label for="username" class="text-xl font-bold">Username</label>
+      {{form.username}}
+    </div>
+    <div class="flex flex-col">
+      <label for="password" class="text-xl font-bold">Password</label>
+      {{form.password}}
+    </div>
+
+    <button
+      type="submit"
+      class="w-full py-2 bg-blue-400 self-center text-white font-bold rounded"
+    >
+      Submit
+    </button>
+
+    <p class="text-sm self-center">
+      Dont have an account?
+      <a href="{% url 'register' %}" class="text-blue-400">Register here.</a>
+    </p>
+  </form>
+</div>
+{% endblock %}

@@ -1,0 +1,26 @@
+{% extends 'base.html'%} {% block content %}
+<nav
+  class="w-full bg-white flex flex-row justify-between p-5 sticky top-0 shadow-xl"
+>
+  <h1 class="text-2xl">Welcome {{user.username}}!</h1>
+
+  <a
+    href="{% url 'logout' %}"
+    class="px-5 py-2 border border-gray-500 rounded-xl shadow-lg hover:scale-95 transition-all"
+    >Logout</a
+  >
+</nav>
+
+
+{% block modal %} 
+<div class="w-full h-full flex justify-center items-center">
+
+  <div class="w-3/5 h-4/5 flex flex-col justify-center items-center">
+    <h1 class="font-bold text-4xl">ONLINE ENROLLMENT SYSTEM</h1>
+    <p class=" text-xl mt-5">
+      Manage your students easily and efficiently.
+    </p>
+    <a href="{% url 'student'%}" class="px-5 py-2 border border-gray-500 rounded-xl shadow-lg hover:scale-95 transition-all mt-5">View Students</a>
+  </div>
+</div>
+{% endblock%} {% endblock %}

@@ -4,40 +4,11 @@ from .forms import StudentForm, RegisterForm
 
 from django.contrib.auth.models import User
 
-
 from django.contrib.auth import authenticate, login, logout
 from django.contrib.auth.forms import AuthenticationForm
 from django.contrib import messages
 
-#Create your views here.
-
-def student_view(req):
-    students = Student.objects.all().values()
-    
-    return render(req, 'student.html', {"students": students})
-
-def professor_view(req):
-    professors = Professor.objects.all().values()
-    
-    return render(req, 'professor.html', {"professors": professors})
-
-def subject_view(req):
-    subjects = Subject.objects.all().values()
-    
-    return render(req, 'subject.html', {"subjects": subjects})
-
-def program_view(req):
-    programs = Program.objects.all().values()
-    
-    return render(req, 'program.html', {"programs": programs})
-
-def enrollment_view(req):
-    enrollments = Enrollment.objects.all().values()
-    
-    return render(req, 'enrollment.html', {"enrollments": enrollments})
-
-
-def addNewStudents(req):
+def StudentView(req):
     student = Student.objects.all()
 
     if req.method == 'POST':
@@ -45,7 +16,7 @@ def addNewStudents(req):
 
         if form.is_valid():
             form.save()
-            return render(req, 'success.html')
+            return redirect('student')
     
     else:
         form = StudentForm()
@@ -63,6 +34,7 @@ def editStudentsInfo(req, id):
         if form.is_valid():
             form.save()
             return render(req, 'success.html')
+        
     else:
         form = StudentForm(instance=student)
 
@@ -81,7 +53,7 @@ def RegisterUser(req):
             messages.error(req, 'User is not valid, please make sure to input a valid information.')
     else:
         form = RegisterForm()
-    return render(req, 'accounts/register.html', {'form': form})
+    return render(req, 'register.html', {'form': form})
 
 def LoginUser(req):
     if req.method == "POST":
@@ -93,7 +65,7 @@ def LoginUser(req):
             if user:
                 login(req, user)
                 messages.success(req, 'User Succesfully logged in.')
-                return redirect('ProfileView')
+                return redirect('home')
             else:
                 messages.error(req, 'User does not exist.')
         else:
@@ -101,7 +73,7 @@ def LoginUser(req):
     else:
         form = AuthenticationForm()
 
-    return render(req, 'accounts/login.html', {'form':form})
+    return render(req, 'login.html', {'form':form})
 
 
 def LogoutUser(req):
@@ -110,5 +82,5 @@ def LogoutUser(req):
     return redirect('login')
 
 
-def ProfileView(req):
-    return render(req, 'accounts/profile_view.html')
+def HomeView(req):
+    return render(req, 'homepage.html')

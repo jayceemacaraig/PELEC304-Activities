@@ -1,39 +1,12 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>{% block title %}{% endblock %}</title>
-    <style>
-        body {
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-        }
-        header,footer {
-           text-align: center;
-        }
-
-        .card-container {
-            display: grid;
-            gap: 10px;
-            grid-template-columns: repeat(5, 1fr);
-
-        }
-
-        .card {
-            width: 300px;
-            padding: 20px;
-            margin-bottom: 10px;
-            border: solid 1px black;
-        }
-    </style>
-</head>
-<body>
-    <header>JAY CEE I. MACARAIG</header>
-
+    <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
+  </head>
+  <body class="w-full h-screen flex flex-col items-center bg-gray-200">
     {% block content%}{% endblock %}
-
-    <footer>Credits to &copy; Jay Cee Macaraig. 2025</footer>
-</body>
+  </body>
 </html>

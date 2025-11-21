@@ -1,3 +1,10 @@
+{% extends 'base.html' %}
+
+{% block title%} EDIT STUDENT {% endblock %}
+
+{% block content%}
+
+    <h1>EDIT STUDENT :</h1>
 <div>
  <form method="POST">
     {% csrf_token %}
@@ -6,3 +13,5 @@
     <button type='submit'>Submit</button>
     </form>
 </div>
+
+{% endblock %}
